@@ -28,13 +28,13 @@ public class Autorizacion implements Filter{
                     String hash = httpServletRequest.getHeader("Authorization");
                     if(hash==null || hash.trim().equals("")){
                         response.setContentType("application/json");
-                        String body= "{\"autorizacion \":\"NO\"}";
+                        String body= "{\"autorizacion \":\"Sin Autorizacion\"}";
                         response.getWriter().write(body);
                     }
 
                     try {
                         Jws<Claims> claims=Jwts.parser().setSigningKey(KEY).parseClaimsJws(hash);
-                        if(url.contains("/api/equipos")||url.contains("/api/partidos")){
+                        if(url.contains("/api/ejercicios")||url.contains("/api/sedes")||url.contains("/api/suscripciones")){
                     chain.doFilter(request, response);
                         }
                     } catch (Exception e) {
