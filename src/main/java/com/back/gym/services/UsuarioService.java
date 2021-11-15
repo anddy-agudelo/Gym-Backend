@@ -19,6 +19,10 @@ public class UsuarioService {
         this.usuarioRepository.save(usuario);
     }
 
+    public UsuarioModel buscarPorNombreUsuario(String username){
+        return this.usuarioRepository.findByusername(username).orElse(new UsuarioModel());
+    }
+
     public List<UsuarioModel> obtenerUsuario(){
         return this.usuarioRepository.findAll();
     }

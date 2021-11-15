@@ -22,10 +22,11 @@ public class UsuarioModel {
     private String fecha_nacimiento;
     private Double estatura;
     private Double peso;
-    private String ejercicio;
-    private String suscripcion;
-    private String sede;
+    private EjercicioModel ejercicio;
+    private SuscripcionModel suscripcion;
+    private SedesModel sede;
     private String horario;
+    private String hash;
     
     public String getId() {
         return id;
@@ -99,31 +100,37 @@ public class UsuarioModel {
     public void setPeso(Double peso) {
         this.peso = peso;
     }
-    public String getEjercicio() {
-        return ejercicio;
-    }
-    public void setEjercicio(String ejercicio) {
-        this.ejercicio = ejercicio;
-    }
-    public String getSuscripcion() {
-        return suscripcion;
-    }
-    public void setSuscripcion(String suscripcion) {
-        this.suscripcion = suscripcion;
-    }
-    public String getSede() {
-        return sede;
-    }
-    public void setSede(String sede) {
-        this.sede = sede;
-    }
     public String getHorario() {
         return horario;
     }
     public void setHorario(String horario) {
         this.horario = horario;
     }
-
+    public String getHash() {
+        return hash;
+    }
+    public void setHash(String hash) {
+        this.hash = hash;
+    }
+    public SuscripcionModel getSuscripcion() {
+        return suscripcion;
+    }
+    public void setSuscripcion(SuscripcionModel suscripcion) {
+        this.suscripcion = suscripcion;
+    }
+    public SedesModel getSede() {
+        return sede;
+    }
+    public void setSede(SedesModel sede) {
+        this.sede = sede;
+    }
+    public EjercicioModel getEjercicio() {
+        return ejercicio;
+    }
+    public void setEjercicio(EjercicioModel ejercicio) {
+        this.ejercicio = ejercicio;
+    }
+    
     
 
 }

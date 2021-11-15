@@ -16,6 +16,7 @@ public class EjercicioModel {
     private Boolean viernes;
     private Boolean sabado;
     private Boolean domingo;
+    private MaquinaModel maquina;
     
     public String getId() {
         return id;
@@ -70,6 +71,12 @@ public class EjercicioModel {
     }
     public void setDomingo(Boolean domingo) {
         this.domingo = domingo;
+    }
+    public MaquinaModel getMaquina() {
+        return maquina;
+    }
+    public void setMaquina(MaquinaModel maquina) {
+        this.maquina = maquina;
     }
     
 

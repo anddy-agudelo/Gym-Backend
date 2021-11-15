@@ -8,6 +8,7 @@ import javax.validation.Valid;
 import com.back.gym.exceptions.CustomException;
 import com.back.gym.models.UsuarioModel;
 import com.back.gym.services.UsuarioService;
+import com.back.gym.utils.BCrypt;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -31,14 +32,12 @@ public class UsuarioController {
             throwError(error);
         }
         Map<String, String> respuesta = new HashMap<>();
-       //Contraseña sin cifrar 123456
         usuario.setPassword(BCrypt.hashpw(usuario.getPassword(), BCrypt.gensalt()));
-       //Contraseña cifrada asfdffdgfghbvnhkhjkjh
         UsuarioModel u = this.usuarioService.buscarPorNombreUsuario(usuario.getUsername());
 
         if (u.getId() == null) {
             this.usuarioService.guardarUsuario(usuario);
-            respuesta.put("mensaje", "Se resgistro el usuario correctamente");
+            respuesta.put("mensaje", "Se registró el usuario correctamente");
         } else {
             respuesta.put("mensaje", "El usuario ya se encuentra registrado");
         }
