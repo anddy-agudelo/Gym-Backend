@@ -2,6 +2,7 @@ package com.back.gym.controllers;
 
 import java.util.Date;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import javax.validation.Valid;
@@ -17,6 +18,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.validation.Errors;
 import org.springframework.validation.ObjectError;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -32,6 +34,16 @@ public class UsuarioController {
     
     @Autowired
     UsuarioService usuarioService;
+
+    /**
+     * Método para realizar la comprobación del token
+     */
+    @GetMapping("/verificar") //Ruta para acceder al método
+    public ResponseEntity<Map<String, Boolean>> validarToken(){ //Retorna un Boolean
+        Map<String, Boolean> respuesta=new HashMap<>();
+        respuesta.put("ok",true); // Agrego la respuesta al MAP
+        return ResponseEntity.ok(respuesta); 
+    }
 
     @PostMapping("/usuarios")
     public ResponseEntity<Map<String, String>> guardar(@Valid @RequestBody UsuarioModel usuario, Errors error){
@@ -77,6 +89,11 @@ public class UsuarioController {
 
         u.setHash(hash);
         return ResponseEntity.ok(u);
+    }
+
+    @GetMapping("/usuarios")
+    public List<UsuarioModel> traerTodos(){
+        return this.usuarioService.obtenerUsuario();
     }
 
     private void throwError(Errors error) {
