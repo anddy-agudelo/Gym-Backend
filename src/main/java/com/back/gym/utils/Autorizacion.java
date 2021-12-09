@@ -12,7 +12,7 @@ import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jws;
 import io.jsonwebtoken.Jwts;
 
-@Component
+// @Component
 public class Autorizacion implements Filter{
     
     public static final String KEY="Molasslqpla";
